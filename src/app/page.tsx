@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 type BandMember = {
   name: string;
   role: string;
@@ -32,6 +36,16 @@ const bandMembers: BandMember[] = [
 ];
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
       {/* Navigation */}
@@ -41,6 +55,8 @@ export default function Home() {
             <span className="text-[#d4d4d4]">A.M.</span>{" "}
             <span className="text-[#c53030]">OWL</span>
           </div>
+
+          {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 text-sm uppercase tracking-wider">
             <a href="#home" className="hover:text-[#c53030] transition-colors">
               Home
@@ -60,6 +76,76 @@ export default function Home() {
             <a
               href="#contact"
               className="hover:text-[#c53030] transition-colors"
+            >
+              Contact
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden text-[#d4d4d4] hover:text-[#c53030] transition-colors"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isMenuOpen ? (
+                <path d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden absolute top-full left-0 w-full bg-[#0a0a0a] border-b border-[#1a1a1a] transition-all duration-300 ease-in-out ${
+            isMenuOpen
+              ? "max-h-96 opacity-100"
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+        >
+          <div className="flex flex-col px-6 py-4 space-y-4">
+            <a
+              href="#home"
+              onClick={closeMenu}
+              className="text-sm uppercase tracking-wider hover:text-[#c53030] transition-colors py-2"
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              onClick={closeMenu}
+              className="text-sm uppercase tracking-wider hover:text-[#c53030] transition-colors py-2"
+            >
+              About
+            </a>
+            <a
+              href="#members"
+              onClick={closeMenu}
+              className="text-sm uppercase tracking-wider hover:text-[#c53030] transition-colors py-2"
+            >
+              Members
+            </a>
+            <a
+              href="#music"
+              onClick={closeMenu}
+              className="text-sm uppercase tracking-wider hover:text-[#c53030] transition-colors py-2"
+            >
+              Music
+            </a>
+            <a
+              href="#contact"
+              onClick={closeMenu}
+              className="text-sm uppercase tracking-wider hover:text-[#c53030] transition-colors py-2"
             >
               Contact
             </a>
