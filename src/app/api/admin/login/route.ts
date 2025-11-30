@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cookies } from "next/headers";
 import crypto from "crypto";
 
 // In production, store this in environment variable or KV
@@ -86,10 +85,8 @@ export async function POST(request: NextRequest) {
     const kvResult = await setSession(sessionToken, 14400); // 4 hours
     console.log("[SERVER] KV storage result:", kvResult);
 
-    // For now, we'll use a cookie-based approach with a signed cookie
-    // In production, use Vercel KV for session storage
+    // Set cookie on the response
     console.log("[SERVER] Setting cookie");
-    const cookieStore = await cookies();
     const isProduction = process.env.NODE_ENV === "production" || process.env.VERCEL === "1";
     console.log("[SERVER] Environment:", {
       NODE_ENV: process.env.NODE_ENV,
@@ -97,13 +94,22 @@ export async function POST(request: NextRequest) {
       isProduction,
     });
     
-    cookieStore.set("admin_session", sessionToken, {
-      httpOnly: true,
-      secure: isProduction, // Use secure cookies in production
-      sameSite: "lax",
-      maxAge: 14400, // 4 hours
-      path: "/",
-    });
+    const response = NextResponse.json({ success: true });
+    
+    // Set cookie with proper options
+    const cookieOptions = [
+      `admin_session=${sessionToken}`,
+      `Path=/`,
+      `Max-Age=${14400}`, // 4 hours
+      `HttpOnly`,
+      `SameSite=Lax`,
+    ];
+    
+    if (isProduction) {
+      cookieOptions.push(`Secure`);
+    }
+    
+    response.headers.set("Set-Cookie", cookieOptions.join("; "));
     console.log("[SERVER] Cookie set with options:", {
       httpOnly: true,
       secure: isProduction,
@@ -111,9 +117,10 @@ export async function POST(request: NextRequest) {
       maxAge: 14400,
       path: "/",
     });
+    console.log("[SERVER] Set-Cookie header:", response.headers.get("Set-Cookie"));
 
     console.log("[SERVER] Returning success response");
-    return NextResponse.json({ success: true });
+    return response;
   } catch (error) {
     console.error("[SERVER] Login error:", error);
     return NextResponse.json(
