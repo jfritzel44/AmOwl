@@ -47,3 +47,14 @@ body::before {
 html {
   scroll-behavior: smooth;
 }
+
+/* Fix background attachment for mobile devices */
+.bg-fixed-mobile {
+  background-attachment: scroll;
+}
+
+@media (min-width: 768px) {
+  .bg-fixed-mobile {
+    background-attachment: fixed;
+  }
+}

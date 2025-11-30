@@ -48,14 +48,13 @@ export default function Home() {
 
   return (
     <div
-      className="min-h-screen text-[#ededed] relative z-10"
+      className="min-h-screen text-[#ededed] relative z-10 bg-fixed-mobile"
       style={{
         backgroundImage:
           "linear-gradient(rgba(15, 15, 10, 0.3), rgba(15, 15, 10, 0.3)), url('/bg.JPG')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
         backgroundColor: "#0f0f0a",
       }}
     >
