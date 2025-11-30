@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "A.M. Owl",
-  description: "Official website for A.M. Owl",
+  title: "A.M. Owl | Funk • Fusion • Soul",
+  description: "A.M. Owl is a dynamic funk, fusion, and soul band. Experience the journey from darkness to light through their soulful sound.",
 };
 
 export default function RootLayout({
