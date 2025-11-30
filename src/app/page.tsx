@@ -83,13 +83,9 @@ export default function Home() {
             <span className="text-[#d4d4d4]">A.M.</span>{" "}
             <span className="text-[#c53030]">OWL</span>
           </h1>
-          <div className="text-xl md:text-2xl mb-4 text-[#d4d4d4] font-light tracking-widest uppercase">
-            Funk • Fusion • Soul
-          </div>
           <p className="text-lg md:text-xl text-[#9ca3af] max-w-2xl mx-auto leading-relaxed">
-            Emerging from the depths with a sound that blends the raw energy of
-            funk, the complexity of fusion, and the soulful depth of classic
-            soul.
+            Emerging from the depths of Chicago&apos;s music scene, a new blend
+            of funk, soul, and fusion
           </p>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -237,43 +233,48 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-24 px-6 bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto text-center">
+          {/* YouTube Video */}
+          <div className="mb-12">
+            <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-[#1a1a1a] border border-[#2a2a2a]">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/1EoHPDCYPB4"
+                title="A.M. Owl - Cosmic Girl (Jamiroquai Cover)"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+            <p className="text-[#9ca3af] text-sm mt-4">
+              Cosmic Girl (Jamiroquai Cover)
+            </p>
+          </div>
+
           <h2 className="text-5xl md:text-6xl font-bold mb-12">
             <span className="text-[#d4d4d4]">Get In</span>{" "}
             <span className="text-[#c53030]">Touch</span>
           </h2>
+
           <p className="text-lg text-[#9ca3af] mb-12 max-w-2xl mx-auto">
             For bookings, collaborations, or just to say hello, reach out to us.
           </p>
           <div className="bg-[#1a1a1a] rounded-lg p-12 border border-[#2a2a2a]">
-            <form className="space-y-6 max-w-md mx-auto">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full px-6 py-4 bg-[#0f0f0f] border border-[#2a2a2a] rounded-lg text-white placeholder-[#6b7280] focus:outline-none focus:border-[#4a7c7e] transition-colors"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full px-6 py-4 bg-[#0f0f0f] border border-[#2a2a2a] rounded-lg text-white placeholder-[#6b7280] focus:outline-none focus:border-[#4a7c7e] transition-colors"
-                />
-              </div>
-              <div>
-                <textarea
-                  placeholder="Message"
-                  rows={5}
-                  className="w-full px-6 py-4 bg-[#0f0f0f] border border-[#2a2a2a] rounded-lg text-white placeholder-[#6b7280] focus:outline-none focus:border-[#4a7c7e] transition-colors resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full px-8 py-4 bg-[#c53030] text-white rounded-full font-semibold hover:bg-[#a02626] transition-colors uppercase tracking-wider text-sm"
+            <div className="text-center space-y-6">
+              <p className="text-xl text-[#d4d4d4] mb-4">Booking & Inquiries</p>
+              <a
+                href="mailto:frankjvalenzano@gmail.com?subject=Booking Inquiry for A.M. Owl"
+                className="inline-block px-8 py-4 bg-[#c53030] text-white rounded-full font-semibold hover:bg-[#a02626] transition-colors uppercase tracking-wider text-sm"
               >
-                Send Message
-              </button>
-            </form>
+                Email Us
+              </a>
+              <p className="text-[#9ca3af] text-sm mt-4">
+                <a
+                  href="mailto:frankjvalenzano@gmail.com?subject=Booking Inquiry for A.M. Owl"
+                  className="text-[#4a7c7e] hover:text-[#5a9ca0] transition-colors"
+                >
+                  frankjvalenzano@gmail.com
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -285,22 +286,27 @@ export default function Home() {
             <span className="text-[#d4d4d4]">A.M.</span>{" "}
             <span className="text-[#c53030]">OWL</span>
           </div>
-          <p className="text-[#6b7280] text-sm mb-6">Funk • Fusion • Soul</p>
           <div className="flex justify-center gap-6 mb-6">
             <a
-              href="#"
+              href="https://www.instagram.com/a.m._owl/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[#6b7280] hover:text-[#c53030] transition-colors"
             >
               Instagram
             </a>
             <a
-              href="#"
+              href="https://open.spotify.com/artist/4IBm4lQIyr8nQt8UbiaE19?si=tzo9ARFIQmiP8fqJOeIeRQ"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[#6b7280] hover:text-[#c53030] transition-colors"
             >
               Spotify
             </a>
             <a
-              href="#"
+              href="https://www.youtube.com/channel/UCE0gHeK7bvKYQrvMvf6_TOQ"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[#6b7280] hover:text-[#c53030] transition-colors"
             >
               YouTube
