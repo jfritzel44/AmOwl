@@ -47,9 +47,20 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
+    <div
+      className="min-h-screen text-[#ededed] relative z-10"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(15, 15, 10, 0.3), rgba(15, 15, 10, 0.3)), url('/owl.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        backgroundColor: "#0f0f0a",
+      }}
+    >
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#1a1a1a]">
+      <nav className="fixed top-0 w-full z-50 bg-[#0f0f0a]/80 backdrop-blur-md border-b border-[#1a1a15] relative z-20">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold tracking-wider">
             <span className="text-[#d4d4d4]">A.M.</span>{" "}
@@ -107,7 +118,7 @@ export default function Home() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden absolute top-full left-0 w-full bg-[#0a0a0a] border-b border-[#1a1a1a] transition-all duration-300 ease-in-out ${
+          className={`md:hidden absolute top-full left-0 w-full bg-[#0f0f0a] border-b border-[#1a1a15] transition-all duration-300 ease-in-out ${
             isMenuOpen
               ? "max-h-96 opacity-100"
               : "max-h-0 opacity-0 overflow-hidden"
@@ -156,12 +167,12 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden z-10"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0a0a0a]"></div>
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#4a7c7e] rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#c53030] rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f0f0a]/60 via-[#1a1a15]/50 to-[#0f0f0a]/60"></div>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#2a1a0a] rounded-full blur-3xl opacity-15"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#c53030] rounded-full blur-3xl opacity-10"></div>
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
@@ -182,7 +193,7 @@ export default function Home() {
             </a>
             <a
               href="#about"
-              className="px-8 py-4 border-2 border-[#4a7c7e] text-[#4a7c7e] rounded-full font-semibold hover:bg-[#4a7c7e] hover:text-white transition-colors uppercase tracking-wider text-sm"
+              className="px-8 py-4 border-2 border-[#c53030] text-[#c53030] rounded-full font-semibold hover:bg-[#c53030] hover:text-white transition-colors uppercase tracking-wider text-sm"
             >
               Learn More
             </a>
@@ -191,7 +202,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 px-6 bg-[#0f0f0f]">
+      <section id="about" className="py-24 px-6 bg-[#0f0f0a] relative z-10">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-bold mb-12 text-center">
             <span className="text-[#d4d4d4]">About</span>{" "}
@@ -220,7 +231,7 @@ export default function Home() {
       </section>
 
       {/* Band Members Section */}
-      <section id="members" className="py-24 px-6 bg-[#0a0a0a]">
+      <section id="members" className="py-24 px-6 bg-[#0f0f0a] relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-bold mb-16 text-center">
             <span className="text-[#d4d4d4]">Band</span>{" "}
@@ -230,7 +241,7 @@ export default function Home() {
             {bandMembers.map((member, index) => (
               <div
                 key={index}
-                className="bg-[#1a1a1a] rounded-lg p-6 border border-[#2a2a2a] hover:border-[#4a7c7e] transition-all hover:transform hover:scale-105"
+                className="bg-[#1a1a15] rounded-lg p-6 border border-[#2a2a1a] hover:border-[#c53030] transition-all hover:transform hover:scale-105"
               >
                 <div className="mb-4">
                   <div className="w-full h-48 bg-gradient-to-br from-[#2a2a2a] to-[#0f0f0f] rounded-lg overflow-hidden relative">
@@ -247,7 +258,7 @@ export default function Home() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-4xl text-[#4a7c7e] font-bold">
+                        <div className="text-4xl text-[#c53030] font-bold">
                           {member.name
                             .split(" ")
                             .map((n) => n[0])
@@ -273,12 +284,12 @@ export default function Home() {
       </section>
 
       {/* Music Section */}
-      <section id="music" className="py-24 px-6 bg-[#0f0f0f]">
+      <section id="music" className="py-24 px-6 bg-[#0f0f0a] relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold mb-12">
             <span className="text-[#d4d4d4]">Music</span>
           </h2>
-          <div className="bg-[#1a1a1a] rounded-lg p-12 border border-[#2a2a2a]">
+          <div className="bg-[#1a1a15] rounded-lg p-12 border border-[#2a2a1a]">
             <div className="mb-8">
               <div className="w-full max-w-md mx-auto mb-6">
                 <img
@@ -308,7 +319,7 @@ export default function Home() {
                 </svg>
                 Listen on Spotify
               </a>
-              <button className="px-8 py-4 border-2 border-[#4a7c7e] text-[#4a7c7e] rounded-full font-semibold hover:bg-[#4a7c7e] hover:text-white transition-colors uppercase tracking-wider text-sm">
+              <button className="px-8 py-4 border-2 border-[#c53030] text-[#c53030] rounded-full font-semibold hover:bg-[#c53030] hover:text-white transition-colors uppercase tracking-wider text-sm">
                 Follow
               </button>
             </div>
@@ -317,11 +328,11 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 bg-[#0a0a0a]">
+      <section id="contact" className="py-24 px-6 bg-[#0f0f0a] relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* YouTube Video */}
           <div className="mb-12">
-            <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-[#1a1a1a] border border-[#2a2a2a]">
+            <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-[#1a1a15] border border-[#2a2a1a]">
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
                 src="https://www.youtube.com/embed/1EoHPDCYPB4"
@@ -343,7 +354,7 @@ export default function Home() {
           <p className="text-lg text-[#9ca3af] mb-12 max-w-2xl mx-auto">
             For bookings, collaborations, or just to say hello, reach out to us.
           </p>
-          <div className="bg-[#1a1a1a] rounded-lg p-12 border border-[#2a2a2a]">
+          <div className="bg-[#1a1a15] rounded-lg p-12 border border-[#2a2a1a]">
             <div className="text-center space-y-6">
               <p className="text-xl text-[#d4d4d4] mb-4">Booking & Inquiries</p>
               <a
@@ -355,7 +366,7 @@ export default function Home() {
               <p className="text-[#9ca3af] text-sm mt-4">
                 <a
                   href="mailto:frankjvalenzano@gmail.com?subject=Booking Inquiry for A.M. Owl"
-                  className="text-[#4a7c7e] hover:text-[#5a9ca0] transition-colors"
+                  className="text-[#c53030] hover:text-[#a02626] transition-colors"
                 >
                   frankjvalenzano@gmail.com
                 </a>
@@ -366,7 +377,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 bg-[#0f0f0f] border-t border-[#1a1a1a]">
+      <footer className="py-12 px-6 bg-[#0f0f0a] border-t border-[#1a1a15]">
         <div className="max-w-6xl mx-auto text-center">
           <div className="text-2xl font-bold mb-4">
             <span className="text-[#d4d4d4]">A.M.</span>{" "}
