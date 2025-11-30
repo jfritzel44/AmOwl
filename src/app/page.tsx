@@ -38,6 +38,7 @@ const bandMembers: BandMember[] = [
     name: "Brendan O'Donnell",
     role: "Drums",
     instrument: "Drums",
+    image: "/brendan-odonnell.JPG",
   },
 ];
 
