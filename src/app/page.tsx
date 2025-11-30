@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type BandMember = {
   name: string;
@@ -40,8 +40,41 @@ const bandMembers: BandMember[] = [
   },
 ];
 
+interface Show {
+  id: string;
+  date: string;
+  venue: string;
+  city: string;
+  ticketLink?: string;
+}
+
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [shows, setShows] = useState<Show[]>([]);
+  const [showsLoading, setShowsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchShows();
+  }, []);
+
+  const fetchShows = async () => {
+    try {
+      const response = await fetch("/api/shows");
+      const data = await response.json();
+      if (data.shows) {
+        // Sort by date
+        const sorted = data.shows.sort(
+          (a: Show, b: Show) =>
+            new Date(a.date).getTime() - new Date(b.date).getTime()
+        );
+        setShows(sorted);
+      }
+    } catch (error) {
+      console.error("Error fetching shows:", error);
+    } finally {
+      setShowsLoading(false);
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -87,6 +120,9 @@ export default function Home() {
             </a>
             <a href="#music" className="hover:text-[#c53030] transition-colors">
               Music
+            </a>
+            <a href="#shows" className="hover:text-[#c53030] transition-colors">
+              Shows
             </a>
             <a
               href="#contact"
@@ -156,6 +192,13 @@ export default function Home() {
               className="text-sm uppercase tracking-wider hover:text-[#c53030] transition-colors py-2"
             >
               Music
+            </a>
+            <a
+              href="#shows"
+              onClick={closeMenu}
+              className="text-sm uppercase tracking-wider hover:text-[#c53030] transition-colors py-2"
+            >
+              Shows
             </a>
             <a
               href="#contact"
@@ -332,6 +375,71 @@ export default function Home() {
               </button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Shows Section */}
+      <section id="shows" className="py-24 px-6 bg-[#0d1a0d] relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-5xl md:text-6xl font-bold mb-12 text-center">
+            <span className="text-[#d4d4d4]">Upcoming</span>{" "}
+            <span className="text-[#c53030]">Shows</span>
+          </h2>
+          {showsLoading ? (
+            <div className="bg-[#1a1a15] rounded-lg p-12 border border-[#2a2a1a] text-center">
+              <p className="text-xl text-[#9ca3af]">Loading shows...</p>
+            </div>
+          ) : shows.length === 0 ? (
+            <div className="bg-[#1a1a15] rounded-lg p-12 border border-[#2a2a1a] text-center">
+              <p className="text-xl text-[#9ca3af]">
+                Stay tuned for upcoming shows
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {shows.map((show) => (
+                <div
+                  key={show.id}
+                  className="bg-[#1a1a15] rounded-lg p-6 border border-[#2a2a1a] hover:border-[#c53030] transition-colors"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                      <p className="text-2xl font-bold text-[#d4d4d4] mb-2">
+                        {new Date(show.date).toLocaleDateString("en-US", {
+                          weekday: "long",
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </p>
+                      <p className="text-lg text-[#c53030] font-semibold mb-1">
+                        {show.venue}
+                      </p>
+                      <p className="text-[#9ca3af]">{show.city}</p>
+                      {show.date && (
+                        <p className="text-sm text-[#9ca3af] mt-2">
+                          {new Date(show.date).toLocaleTimeString("en-US", {
+                            hour: "numeric",
+                            minute: "2-digit",
+                          })}
+                        </p>
+                      )}
+                    </div>
+                    {show.ticketLink && (
+                      <a
+                        href={show.ticketLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3 bg-[#c53030] text-white rounded-full font-semibold hover:bg-[#a02626] transition-colors uppercase tracking-wider text-sm text-center"
+                      >
+                        Get Tickets
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
