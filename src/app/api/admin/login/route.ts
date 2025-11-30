@@ -67,7 +67,22 @@ export async function POST(request: NextRequest) {
 
     // Store session in KV
     console.log("[SERVER] Storing session in KV");
-    const { setSession } = await import("@/lib/kv");
+    const { setSession, isKVAvailable } = await import("@/lib/kv");
+    
+    // Check if KV is available in production
+    const isProduction = process.env.NODE_ENV === "production" || process.env.VERCEL === "1";
+    if (isProduction && !isKVAvailable()) {
+      console.error("[SERVER] ERROR: Vercel KV is not configured in production!");
+      console.error("[SERVER] Please set KV_REST_API_URL and KV_REST_API_TOKEN environment variables in Vercel.");
+      return NextResponse.json(
+        { 
+          error: "Server configuration error. Please contact the administrator.",
+          details: "Vercel KV is not configured. Sessions cannot be stored."
+        },
+        { status: 500 }
+      );
+    }
+    
     const kvResult = await setSession(sessionToken, 14400); // 4 hours
     console.log("[SERVER] KV storage result:", kvResult);
 
