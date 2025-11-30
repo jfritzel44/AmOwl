@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "A.M. Owl | Funk • Fusion • Soul",
   description: "A.M. Owl is a dynamic funk, fusion, and soul band. Experience the journey from darkness to light through their soulful sound.",
+  icons: {
+    icon: "/flav.png",
+    shortcut: "/flav.png",
+    apple: "/flav.png",
+  },
 };
 
 export default function RootLayout({
