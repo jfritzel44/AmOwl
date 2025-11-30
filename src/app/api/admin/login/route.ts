@@ -87,7 +87,6 @@ export async function POST(request: NextRequest) {
 
     // Set cookie on the response
     console.log("[SERVER] Setting cookie");
-    const isProduction = process.env.NODE_ENV === "production" || process.env.VERCEL === "1";
     console.log("[SERVER] Environment:", {
       NODE_ENV: process.env.NODE_ENV,
       VERCEL: process.env.VERCEL,
