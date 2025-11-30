@@ -29,7 +29,7 @@ const bandMembers: BandMember[] = [
     image: "/ian-walsh.png",
   },
   {
-    name: "Bryan Roberts",
+    name: "Brian Roberts",
     role: "Bass",
     instrument: "Bass",
   },
@@ -51,7 +51,7 @@ export default function Home() {
       className="min-h-screen text-[#ededed] relative z-10"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(15, 15, 10, 0.3), rgba(15, 15, 10, 0.3)), url('/owl.png')",
+          "linear-gradient(rgba(15, 15, 10, 0.3), rgba(15, 15, 10, 0.3)), url('/bg.JPG')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -177,10 +177,14 @@ export default function Home() {
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1 className="text-7xl md:text-9xl font-bold mb-6 tracking-tight">
-            <span className="text-[#d4d4d4]">A.M.</span>{" "}
-            <span className="text-[#c53030]">OWL</span>
+            <span className="text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              A.M.
+            </span>{" "}
+            <span className="text-[#c53030] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              OWL
+            </span>
           </h1>
-          <p className="text-lg md:text-xl text-[#9ca3af] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             Emerging from the depths of Chicago&apos;s music scene, a new blend
             of funk, soul, and fusion
           </p>
@@ -193,7 +197,7 @@ export default function Home() {
             </a>
             <a
               href="#about"
-              className="px-8 py-4 border-2 border-[#c53030] text-[#c53030] rounded-full font-semibold hover:bg-[#c53030] hover:text-white transition-colors uppercase tracking-wider text-sm"
+              className="px-8 py-4 border-2 border-white text-white bg-black/40 backdrop-blur-sm rounded-full font-semibold hover:bg-white hover:text-[#c53030] transition-colors uppercase tracking-wider text-sm drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
             >
               Learn More
             </a>
@@ -358,17 +362,17 @@ export default function Home() {
             <div className="text-center space-y-6">
               <p className="text-xl text-[#d4d4d4] mb-4">Booking & Inquiries</p>
               <a
-                href="mailto:frankjvalenzano@gmail.com?subject=Booking Inquiry for A.M. Owl"
+                href="mailto:amowlfunk@gmail.com?subject=Booking Inquiry for A.M. Owl"
                 className="inline-block px-8 py-4 bg-[#c53030] text-white rounded-full font-semibold hover:bg-[#a02626] transition-colors uppercase tracking-wider text-sm"
               >
                 Email Us
               </a>
               <p className="text-[#9ca3af] text-sm mt-4">
                 <a
-                  href="mailto:frankjvalenzano@gmail.com?subject=Booking Inquiry for A.M. Owl"
+                  href="mailto:amowlfunk@gmail.com?subject=Booking Inquiry for A.M. Owl"
                   className="text-[#c53030] hover:text-[#a02626] transition-colors"
                 >
-                  frankjvalenzano@gmail.com
+                  amowlfunk@gmail.com
                 </a>
               </p>
             </div>
