@@ -14,7 +14,10 @@ export default function AdminLogin() {
     setError("");
     setLoading(true);
 
+    console.log("[CLIENT] Login form submitted");
+
     try {
+      console.log("[CLIENT] Sending login request to /api/admin/login");
       const response = await fetch("/api/admin/login", {
         method: "POST",
         headers: {
@@ -24,28 +27,44 @@ export default function AdminLogin() {
         credentials: "include", // Ensure cookies are sent
       });
 
+      console.log("[CLIENT] Response received:", {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok,
+        headers: Object.fromEntries(response.headers.entries()),
+      });
+
       // Check if response is ok before parsing JSON
       if (!response.ok) {
+        console.log("[CLIENT] Response not OK, parsing error data");
         const errorData = await response.json().catch(() => ({ error: "Invalid password" }));
+        console.log("[CLIENT] Error data:", errorData);
         setError(errorData.error || "Invalid password");
         setLoading(false);
         return;
       }
 
+      console.log("[CLIENT] Parsing response JSON");
       const data = await response.json();
+      console.log("[CLIENT] Response data:", data);
 
       if (data.success) {
+        console.log("[CLIENT] Login successful, checking cookies before navigation");
+        console.log("[CLIENT] Document cookies:", document.cookie);
         // Use window.location for more reliable navigation in production
         // Small delay to ensure cookie is set
+        console.log("[CLIENT] Setting timeout for navigation to /admin");
         setTimeout(() => {
+          console.log("[CLIENT] Navigating to /admin");
           window.location.href = "/admin";
         }, 100);
       } else {
+        console.log("[CLIENT] Login failed - no success flag in response");
         setError(data.error || "Login failed");
         setLoading(false);
       }
     } catch (err) {
-      console.error("Login error:", err);
+      console.error("[CLIENT] Login error:", err);
       setError("An error occurred. Please try again.");
       setLoading(false);
     }
