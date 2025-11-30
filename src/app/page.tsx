@@ -33,6 +33,11 @@ const bandMembers: BandMember[] = [
     role: "Bass",
     instrument: "Bass",
   },
+  {
+    name: "Brendan O'Donnell",
+    role: "Drums",
+    instrument: "Drums",
+  },
 ];
 
 export default function Home() {
@@ -240,7 +245,7 @@ export default function Home() {
             <span className="text-[#d4d4d4]">Band</span>{" "}
             <span className="text-[#c53030]">Members</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
             {bandMembers.map((member, index) => (
               <div
                 key={index}
