@@ -32,6 +32,7 @@ const bandMembers: BandMember[] = [
     name: "Brian Roberts",
     role: "Bass",
     instrument: "Bass",
+    image: "/brian-roberts.PNG",
   },
   {
     name: "Brendan O'Donnell",
