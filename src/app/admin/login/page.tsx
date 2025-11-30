@@ -21,19 +21,32 @@ export default function AdminLogin() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ password }),
+        credentials: "include", // Ensure cookies are sent
       });
+
+      // Check if response is ok before parsing JSON
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: "Invalid password" }));
+        setError(errorData.error || "Invalid password");
+        setLoading(false);
+        return;
+      }
 
       const data = await response.json();
 
-      if (response.ok) {
-        router.push("/admin");
-        router.refresh();
+      if (data.success) {
+        // Use window.location for more reliable navigation in production
+        // Small delay to ensure cookie is set
+        setTimeout(() => {
+          window.location.href = "/admin";
+        }, 100);
       } else {
-        setError(data.error || "Invalid password");
+        setError(data.error || "Login failed");
+        setLoading(false);
       }
     } catch (err) {
+      console.error("Login error:", err);
       setError("An error occurred. Please try again.");
-    } finally {
       setLoading(false);
     }
   };

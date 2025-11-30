@@ -60,9 +60,10 @@ export async function POST(request: NextRequest) {
     // For now, we'll use a cookie-based approach with a signed cookie
     // In production, use Vercel KV for session storage
     const cookieStore = await cookies();
+    const isProduction = process.env.NODE_ENV === "production" || process.env.VERCEL === "1";
     cookieStore.set("admin_session", sessionToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: isProduction, // Use secure cookies in production
       sameSite: "lax",
       maxAge: 14400, // 4 hours
       path: "/",
